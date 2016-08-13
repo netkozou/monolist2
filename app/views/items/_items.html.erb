@@ -1,18 +1,18 @@
 <div class="container">
   <div class="container-inner inner-default clearfix">
-    <% items['Items'].each do |item| %>
+    <% @items.each do |item| %>
       <div class="item-box">
         <div class="image">
           <div class="img-wrap">
             <% #TODO 商品画像 %>
             
-            <%= link_to image_tag(item['Item']['largeImageUrl'].gsub('?_ex=200x200', '') , alt: item['Item']['title']),item['Item']['itemUrl'], { :target => "_blank"}  %>
+            <%= link_to image_tag(item['mediumImageUrls'].first['imageUrl'].gsub('?_ex=128x128', '') , alt: item['title']),item['itemUrl'], { :target => "_blank"}  %>
           
           </div>
         </div>
         <div class="detail">
           <p class="title">
-            <%=link_to item['Item']['title'], item['Item']['itemUrl'], { :target => "_blank"}  %>
+            <%=link_to item['itemName'], item['itemUrl'], { :target => "_blank"}  %>
           </p>
         </div>
         <div class="action clearfix">
