@@ -56,5 +56,7 @@ group :development, :test do
   gem 'spring'
 
   gem 'pry-rails'
+  #追記DB中身GUI
+  gem 'rails_admin'
 end
 
