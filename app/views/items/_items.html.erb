@@ -5,9 +5,11 @@
         <div class="image">
           <div class="img-wrap">
             <% #TODO 商品画像 %>
-            
-            <%= link_to image_tag(item['mediumImageUrls'].first['imageUrl'].gsub('?_ex=128x128', '') , alt: item['title']),item['itemUrl'], { :target => "_blank"}  %>
-          
+            <% if item['mediumImageUrls'].first['imageUrl'] == "" %>
+              <img src="no-image.png">
+            <% else %>
+              <%= link_to image_tag(item['mediumImageUrls'].first['imageUrl'].gsub('?_ex=128x128', '') , alt: item['itemName']),item['itemUrl'], { :target => "_blank"}  %>
+            <% end %>
           </div>
         </div>
         <div class="detail">
@@ -16,11 +18,15 @@
           </p>
         </div>
         <div class="action clearfix">
-          <%= link_to "" , ownerships_path(item_code: item['itemCode'] , type: "Want") ,
-                      :class => "btn-want btn btn-danger btn-sm want",
-                      :item_code => "want-#{item['itemCode']}",
-                      :remote => true,
-                      :method => :post %>
+
+            <% if current_user.want?(@item) %>
+              <%= render 'want' %>
+            <% else %>
+              <%= render 'unwant' %>
+            <% end %>
+         
+      
+ 
           <%= link_to "" , ownerships_path(item_code: item['itemCode'] , type: "Have") ,
                       :class => "btn-have btn btn-warning btn-sm have",
                       :item_code => "have-#{item['itemCode']}",

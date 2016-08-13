@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
         imageFlag: 1,
       )
       @items = response.first(20)
-      print @items
+
     end
   end
 
