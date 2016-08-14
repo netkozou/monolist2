@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
     haves.destroy if have
   end
   def have?(item)
-    have_items.include?(item)
+    haves.include?(item)
   end
 
 
