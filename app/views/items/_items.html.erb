@@ -5,7 +5,7 @@
         <div class="image">
           <div class="img-wrap">
             <% #TODO 商品画像 %>
-            <% if item['mediumImageUrls'].first['imageUrl'] == "" %>
+            <% if item['imageFlag'] ==0 %>
               <img src="no-image.png">
             <% else %>
               <%= link_to image_tag(item['mediumImageUrls'].first['imageUrl'].gsub('?_ex=128x128', '') , alt: item['itemName']),item['itemUrl'], { :target => "_blank"}  %>
@@ -18,15 +18,11 @@
           </p>
         </div>
         <div class="action clearfix">
-
-            <% if current_user.want?(@item) %>
-              <%= render 'want' %>
-            <% else %>
-              <%= render 'unwant' %>
-            <% end %>
-         
-      
- 
+          <%= link_to "" , ownerships_path(item_code: item['itemCode'] , type: "Want") ,
+                      :class => "btn-want btn btn-danger btn-sm want",
+                      :item_code => "want-#{item['itemCode']}",
+                      :remote => true,
+                      :method => :post %>
           <%= link_to "" , ownerships_path(item_code: item['itemCode'] , type: "Have") ,
                       :class => "btn-have btn btn-warning btn-sm have",
                       :item_code => "have-#{item['itemCode']}",
