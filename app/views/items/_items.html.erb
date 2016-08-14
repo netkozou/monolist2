@@ -5,9 +5,11 @@
         <div class="image">
           <div class="img-wrap">
             <% #TODO 商品画像 %>
-            
-            <%= link_to image_tag(item['mediumImageUrls'].first['imageUrl'].gsub('?_ex=128x128', '') , alt: item['title']),item['itemUrl'], { :target => "_blank"}  %>
-          
+            <% if item['imageFlag'] ==0 %>
+              <img src="no-image.png">
+            <% else %>
+              <%= link_to image_tag(item['mediumImageUrls'].first['imageUrl'].gsub('?_ex=128x128', '') , alt: item['itemName']),item['itemUrl'], { :target => "_blank"}  %>
+            <% end %>
           </div>
         </div>
         <div class="detail">
