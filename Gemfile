@@ -20,7 +20,7 @@ gem 'bootstrap-sass'
 # http://webservice.rakuten.co.jp/sdk/ruby.html
 # https://github.com/rakuten-ws/rws-ruby-sdk
 gem 'rakuten_web_service'
-
+gem 'rails_admin'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -45,6 +45,6 @@ group :development, :test do
 
   gem 'pry-rails'
   #追記DB中身GUI
-  gem 'rails_admin'
+  
 end
 
