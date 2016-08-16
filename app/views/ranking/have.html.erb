@@ -1,0 +1,31 @@
+<h1>Ranking Have</h1>
+<p>Find me in app/views/ranking/have.html.erb</p>
+<% rank_num = 0 %>
+
+
+<div class="container">
+  <div class="container-inner inner-default clearfix">
+    <%@haves.each do |h|%>
+    
+      <div class="item-box">
+        <% rank_num += 1 %>
+        <%= rank_num%>位、Have数<%= h[1]%>件
+        <div class="image">
+          <div class="img-wrap">
+            <% if Item.find(h[0]).large_image.present? %>
+              <%= image_tag(Item.find(h[0]).large_image , alt: Item.find(h[0]).title) %>
+            <% else %>
+              <%= image_tag("no-image.png" , alt: item.title) %>
+            <% end %>
+          </div>
+        </div>
+        <div class="detail">
+          <p class="title">
+            <%= Item.find(h[0]).title%>
+          </p>
+        </div>
+        <%= render 'items/action' , item: Item.find(h[0]) if logged_in? %>
+      </div>
+    <% end %>
+  </div>
+</div>

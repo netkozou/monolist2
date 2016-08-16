@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'ranking/have'
+
+  get 'ranking/want'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'welcome#index'
 
